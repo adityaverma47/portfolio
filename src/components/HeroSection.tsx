@@ -126,22 +126,20 @@ const HeroSection = () => {
                 frameBorder="0"
                 width="100%"
                 height="100%"
-                className="pointer-events-auto"
+                className="pointer-events-auto scale-[1.6]"
                 title="3D Robot Model"
                 loading="lazy"
               />
             </div>
             {/* Gradient overlay to hide watermark */}
             <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+            {/* Specific mask for Spline watermark in bottom right */}
+            <div className="absolute bottom-0 right-0 w-40 h-16 bg-background pointer-events-auto cursor-default z-20" />
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float-slow">
-        <span className="text-xs text-muted-foreground tracking-widest uppercase">Scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent" />
-      </div>
+
     </section>
   );
 };

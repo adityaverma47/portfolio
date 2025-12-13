@@ -1,61 +1,12 @@
+
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight } from '@phosphor-icons/react';
-
-import project1 from '@/assets/project-1.png';
-import project2 from '@/assets/project-2.png';
-import project3 from '@/assets/project-3.png';
-import project4 from '@/assets/project-4.png';
-import project5 from '@/assets/project-5.png';
-import project6 from '@/assets/project-6.png';
+import { Link } from 'react-router-dom';
+import { projects } from '@/data/projects';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const projects = [
-  {
-    id: 1,
-    title: 'FinAcc Dashboard',
-    description: 'Modern accounting platform with real-time analytics and financial insights.',
-    image: project1,
-    tech: ['React', 'TypeScript', 'Tailwind'],
-  },
-  {
-    id: 2,
-    title: 'Prana Healthcare',
-    description: 'Healthcare management system with patient care and operational efficiency.',
-    image: project2,
-    tech: ['React', 'Node.js', 'MongoDB'],
-  },
-  {
-    id: 3,
-    title: '3D Portfolio',
-    description: 'Interactive 3D portfolio with Spline integration and GSAP animations.',
-    image: project3,
-    tech: ['Three.js', 'GSAP', 'Spline'],
-  },
-  {
-    id: 4,
-    title: 'Gaming Website',
-    description: 'Immersive gaming platform with dynamic visuals and smooth interactions.',
-    image: project4,
-    tech: ['React', 'Framer Motion', 'CSS'],
-  },
-  {
-    id: 5,
-    title: 'Animation Tools',
-    description: 'Web animation toolkit showcasing various animation libraries and techniques.',
-    image: project5,
-    tech: ['GSAP', 'Lenis', 'Three.js'],
-  },
-  {
-    id: 6,
-    title: 'Animated Portfolio',
-    description: 'Step-by-step animated portfolio with modern design patterns.',
-    image: project6,
-    tech: ['React', 'GSAP', 'Tailwind'],
-  },
-];
 
 const ProjectsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -131,9 +82,10 @@ const ProjectsSection = () => {
         >
           <div className="flex gap-6 min-w-max md:grid md:grid-cols-2 lg:grid-cols-3 md:min-w-0 md:gap-8">
             {projects.map((project) => (
-              <div
+              <Link
+                to={`/project/${project.id}`}
                 key={project.id}
-                className="project-card group w-80 md:w-auto flex-shrink-0 md:flex-shrink glass rounded-2xl overflow-hidden card-lift cursor-pointer"
+                className="project-card group w-80 md:w-auto flex-shrink-0 md:flex-shrink glass rounded-2xl overflow-hidden card-lift cursor-pointer block"
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">
@@ -173,7 +125,7 @@ const ProjectsSection = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

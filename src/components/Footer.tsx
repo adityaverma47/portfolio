@@ -18,8 +18,8 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { name: 'GitHub', icon: GithubLogo, href: '#' },
-  { name: 'LinkedIn', icon: LinkedinLogo, href: '#' },
+  { name: 'GitHub', icon: GithubLogo, href: 'https://github.com/bugSlayer555/' },
+  { name: 'LinkedIn', icon: LinkedinLogo, href: 'https://www.linkedin.com/in/adityaverma47' },
   { name: 'Twitter', icon: TwitterLogo, href: '#' },
 ];
 
@@ -89,44 +89,68 @@ const Footer = () => {
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="footer-content">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            {/* Logo */}
-            <div className="text-center md:text-left">
+            {/* Logo and Tagline */}
+            <div className="space-y-4">
               <a href="#home" className="inline-block">
                 <span className="text-2xl font-bold tracking-tighter">
                   <span className="text-foreground">UI</span>
                   <span className="gradient-text">Wizard</span>
                 </span>
               </a>
-              <p className="text-muted-foreground text-sm mt-2">
-                Crafting digital experiences
+              <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
+                Crafting immersive digital experiences with cutting-edge technologies.
+                Focused on performance, accessibility, and modern design.
               </p>
+              <div className="flex gap-4 pt-2">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    className="w-10 h-10 glass rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:glow-primary-sm transition-all duration-300"
+                    aria-label={social.name}
+                  >
+                    <social.icon size={20} weight="light" />
+                  </a>
+                ))}
+              </div>
             </div>
 
-            {/* Navigation */}
-            <nav className="flex flex-wrap justify-center gap-6">
-              {footerLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </nav>
+            {/* Links Columns */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
+              <div className="space-y-4">
+                <h4 className="font-bold text-foreground">Sitemap</h4>
+                <ul className="space-y-2">
+                  {footerLinks.map((link) => (
+                    <li key={link.name}>
+                      <a
+                        href={link.href}
+                        className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                      >
+                        {link.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            {/* Social Icons */}
-            <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  className="w-10 h-10 glass rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:glow-primary-sm transition-all duration-300"
-                  aria-label={social.name}
-                >
-                  <social.icon size={20} weight="light" />
-                </a>
-              ))}
+              <div className="space-y-4">
+                <h4 className="font-bold text-foreground">Services</h4>
+                <ul className="space-y-2">
+                  {['Web Development', 'UI/UX Design', '3D Visuals', 'Consulting'].map((item) => (
+                    <li key={item} className="text-muted-foreground text-sm">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="font-bold text-foreground">Contact</h4>
+                <ul className="space-y-2">
+                  <li className="text-muted-foreground text-sm">adityaverma4769@gmail.com</li>
+                  <li className="text-muted-foreground text-sm">+91 7905902205</li>
+                </ul>
+              </div>
             </div>
           </div>
 

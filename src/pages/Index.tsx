@@ -6,6 +6,7 @@ import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import ProjectsSection from '@/components/ProjectsSection';
+import EducationSection from '@/components/EducationSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
@@ -43,15 +44,15 @@ const Index = () => {
 
       {/* Main Content */}
       <div
-        className={`transition-opacity duration-500 ${
-          isLoading ? 'opacity-0' : 'opacity-100'
-        }`}
+        className={`transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'
+          }`}
       >
         <Navigation />
         <main>
           <HeroSection />
           <AboutSection />
           <ProjectsSection />
+          <EducationSection />
           <ContactSection />
         </main>
         <Footer />
