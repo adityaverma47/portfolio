@@ -29,7 +29,7 @@ export const projects: Project[] = [
             'Invoice generation and management',
             'Multi-currency support'
         ],
-        liveLink: 'https://finaccout.netlify.app/',
+        liveLink: 'https://finaccoutsourcings.com',
         repoLink: 'https://github.com/example/finacc'
     },
     {

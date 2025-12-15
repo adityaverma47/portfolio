@@ -89,23 +89,47 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      // Call Express backend API
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${apiUrl}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
+      const result = await response.json();
 
-    setFormData({ name: '', email: '', message: '' });
-    setIsSubmitting(false);
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
 
-    // Button animation
-    gsap.fromTo(
-      '.submit-btn',
-      { scale: 1 },
-      { scale: 1.1, duration: 0.2, yoyo: true, repeat: 1 }
-    );
+      toast({
+        title: "Message sent successfully! ✓",
+        description: "Thank you for reaching out. I'll get back to you within 24 hours.",
+      });
+
+      setFormData({ name: '', email: '', message: '' });
+
+      // Button animation
+      gsap.fromTo(
+        '.submit-btn',
+        { scale: 1 },
+        { scale: 1.1, duration: 0.2, yoyo: true, repeat: 1 }
+      );
+    } catch (error: any) {
+      console.error('Form submission error:', error);
+
+      toast({
+        title: "Failed to send message",
+        description: error.message || "Please try again later or contact me directly at adityaverma4769@gmail.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
